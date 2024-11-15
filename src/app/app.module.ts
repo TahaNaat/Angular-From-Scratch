@@ -1,18 +1,24 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+import { HeaderComponent } from './components/header/header.component';
+import { ResidencesComponent } from './components/residences/residences.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    //decalartaion nal9a feha ya composant tabaa el module APP
+    AppComponent,
+    HeaderComponent,
+    ResidencesComponent,
   ],
   imports: [
+    //importer des modules externs
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent], //c pour declarer le composant racine
 })
-export class AppModule { }
+export class AppModule {}
