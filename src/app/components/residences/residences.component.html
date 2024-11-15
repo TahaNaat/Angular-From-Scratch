@@ -19,6 +19,9 @@
     <!--syntax ta ngfor ;boucle yemchi ll tablue elemt 1,2,3, naadi table aal ngfor yji yhez ligne loula ykml aaleha traimtine il suffit kmlt tarjaa in other words for each-->
   </tr>
 </table>
-<div *ngIf="hide">
-    {{selectedResidence.address}}
+<div *ngIf="hide && selectedResidence.address != 'inconnu'">
+  {{ selectedResidence.address }}
+</div>
+<div *ngIf="hide && selectedResidence.address == 'inconnu'">
+  <p>Address not available</p>
 </div>
