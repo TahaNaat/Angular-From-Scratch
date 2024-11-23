@@ -1,0 +1,100 @@
+:host {
+    display: block;
+    font-family: 'Roboto', Arial, sans-serif;
+    margin: 20px;
+    background: #121212; /* Dark charcoal background */
+    color: #f5f5f5; /* Light text for contrast */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  h1 {
+    text-align: center;
+    color: #ffcc00; /* Bright yellow for the heading */
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 20px 0;
+    background: #1e1e1e; /* Darker charcoal for table background */
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  th, td {
+    padding: 15px;
+    text-align: left;
+    font-size: 1rem;
+  }
+  
+  th {
+    background: #222; /* Slightly lighter charcoal */
+    color: #ffcc00; /* Bright yellow text */
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  td {
+    color: #f5f5f5; /* Light text */
+  }
+  
+  img {
+    border-radius: 8px;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  img:hover {
+    transform: scale(1.1);
+  }
+  
+  tr:nth-child(even) {
+    background: #2a2a2a; /* Slightly lighter for alternating rows */
+  }
+  
+  tr:hover {
+    background: #3a3a3a; /* Hover effect with a lighter charcoal */
+  }
+  
+  button {
+    background: #ffcc00; /* Bright yellow for buttons */
+    color: #121212; /* Dark text for contrast */
+    border: none;
+    border-radius: 8px;
+    padding: 10px 15px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+    font-weight: bold;
+  }
+  
+  button:hover {
+    background: #ffd633; /* Slightly lighter yellow for hover */
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(255, 204, 0, 0.6);
+  }
+  
+  div {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    background: #333; /* Dark grey for divs */
+    color: #ffcc00; /* Bright yellow text */
+    font-size: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  p {
+    color: #ff6666; /* Bright red for error messages */
+    font-weight: bold;
+    font-size: 1.1rem;
+  }
+  
