@@ -31,7 +31,7 @@ import { AddApartmentComponent } from './components/apartments/add-apartment/add
     AddApartmentComponent
   ],
   imports: [
-        //importer des modules externs
+  //importer des modules externs
     BrowserModule,
     AppRoutingModule,
     FormsModule

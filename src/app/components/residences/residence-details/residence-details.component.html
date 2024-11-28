@@ -1,1 +1,5 @@
-<p>{{selectedResidence?.name}}</p>
+<p>{{ selectedResidence?.name }}</p>
+<button (click)="previousResidence()"><-Previous</button>
+<button (click)="nextResidence()">next-></button>
+<button routerLink="/addResidence">Add new Residence</button>
+<button [routerLink]="['/updateResidence/', id]">Update Residence</button>

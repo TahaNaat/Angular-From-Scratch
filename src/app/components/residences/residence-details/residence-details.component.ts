@@ -1,15 +1,14 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Residence } from 'src/app/core/models/residence';
-
 
 @Component({
   selector: 'app-residence-details',
   templateUrl: './residence-details.component.html',
-  styleUrls: ['./residence-details.component.css']
+  styleUrls: ['./residence-details.component.css'],
 })
 export class ResidenceDetailsComponent {
-  residences:Residence[]=[
+  residences: Residence[] = [
     {
       id: 1,
       name: 'El fel',
@@ -39,11 +38,25 @@ export class ResidenceDetailsComponent {
       status: 'En Construction',
     },
   ];
-  id!:number
-  selectedResidence!: Residence |undefined;
-  constructor(private ac:ActivatedRoute){
-    this.id=this.ac.snapshot.params['id'];
-    this.selectedResidence=this.residences.find((r) => r.id == this.id);
+  id!: number;
+  selectedResidence!: Residence | undefined;
+  currentIndex: number = 0;
+  constructor(private ac: ActivatedRoute, private r: Router) {
+    this.id = this.ac.snapshot.params['id'];
+    this.selectedResidence = this.residences.find((r) => r.id == this.id);
   }
-
+  previousResidence() {
+    if (this.currentIndex > 0) {
+      this.currentIndex--;
+      this.r.navigate(['/details/', this.residences[this.currentIndex]['id']]);
+      this.selectedResidence = this.residences[this.currentIndex];
+    }
+  }
+  nextResidence() {
+    if (this.currentIndex < this.residences.length - 1) {
+      this.currentIndex++;
+      this.r.navigate(['/details/', this.residences[this.currentIndex]['id']]);
+      this.selectedResidence = this.residences[this.currentIndex];
+    }
+  }
 }
