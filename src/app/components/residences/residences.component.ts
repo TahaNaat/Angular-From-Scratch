@@ -1,18 +1,18 @@
-//import { Residence } from './../../core/models/residence';
-//nsobo exten esmha auto imoort tekhdem khedmt import maghir manktbo el code
 import { Component, OnInit } from '@angular/core';
-import { Residence } from 'src/app/core/models/residence';
+import { Residence } from '../../core/models/residence';
+//nsobo exten esmha auto imoort tekhdem khedmt import maghir manktbo el code
+
 @Component({
   selector: 'app-residences',
   templateUrl: './residences.component.html',
   styleUrls: ['./residences.component.css'],
 })
 export class ResidencesComponent implements OnInit {
-  title: string = 'Liste des résidances';
+  title: string = 'Liste des résidences';
   residences: Residence[] = [];
   hide: boolean = false;
-  selectedResidence: Residence= new Residence();
-
+  selectedResidence: Residence = new Residence();
+  searchText: string = '';
   ngOnInit() {
     this.residences = [
       {
@@ -44,11 +44,34 @@ export class ResidencesComponent implements OnInit {
         status: 'En Construction',
       },
     ];
-    
+    console.log(this.hide);
+    console.log(this.selectedResidence);
   }
-  showAddress (residence: Residence){ 
-    this.hide = true;
-    this.selectedResidence= residence ;
 
+  showAddress(residence: Residence) {
+    this.hide = true;
+    this.selectedResidence = residence;
+  }
+
+  filterResidence() {
+    return this.residences.filter((r) =>
+      r.address.toLowerCase().includes(this.searchText.toLowerCase())
+    );
+  }
+
+  listFavoris:Residence[]=[]
+  addToFavoris(element:Residence) {
+    let index = this.listFavoris.findIndex((r) => r.id == element.id);
+    if (index == -1) {
+      this.listFavoris.push(element);
+    }
+    else {
+      this.listFavoris.splice(index, 1);
+    }
+    console.log(this.listFavoris)
+  }
+
+  isFavoris(residence: Residence) {
+    return this.listFavoris.some((r) => r.id == residence.id);
   }
 }
