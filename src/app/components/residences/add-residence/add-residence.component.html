@@ -1,1 +1,57 @@
-<p>add-residence works!</p>
+<form [formGroup]="residence" enctype="multipart/form-data">
+    Name :<input formControlName="name" />
+    <div *ngIf="residence.get('name')!.invalid && (residence.get('name')!.touched || residence.get('name')!.dirty)">
+        <div *ngIf="residence.get('name')!.errors!['required']">Name is required</div>
+        <div *ngIf="residence.get('name')!.errors!['minlength']">Name must have at least 3 characters</div>
+    </div>
+    Address :<div formGroupName="address">
+        Street : <input formControlName="street" /> 
+        <div *ngIf="residence.get('address.street')!.invalid && (residence.get('address.street')!.dirty || residence.get('address.street')!.touched)">
+            <div *ngIf="residence.get('address.street')!.errors!['required']">Street is required</div>
+        </div>
+        City :<input formControlName="city"/>
+        <div *ngIf="residence.get('address.city')!.invalid && (residence.get('address.city')!.dirty || residence.get('address.city')!.touched)">
+            <div *ngIf="residence.get('address.city')!.errors!['required']">City is required</div>
+        </div>
+    </div>
+    Image :<input type="file" formControlName="image" accept="image/*" /> 
+    Status :<select formControlName="status">
+        <option value="Disponible">Disponible</option>
+        <option value="Vendu">Vendu</option>
+        <option value="En Construction">En Construction</option>
+    </select>
+    <input type="submit" value="submit" />
+</form>
+<style>
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        max-width: 400px;
+        margin: auto;
+    }
+
+    input[type="text"], input[type="file"], select {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    input[type="submit"] {
+        padding: 10px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+
+    div {
+        color: red;
+        font-size: 12px;
+    }
+</style>

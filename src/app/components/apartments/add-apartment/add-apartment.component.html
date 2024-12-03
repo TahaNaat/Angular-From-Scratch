@@ -1,1 +1,70 @@
-<p>add-apartment works!</p>
+<form [formGroup]="apartment"  enctype="multipart/form-data">
+    <div>
+        <label for="apartNum">Apartment Number:</label>
+        <input id="apartNum" formControlName="apartNum" type="text">
+        <div *ngIf="apartment.get('apartNum')?.invalid && (apartment.get('apartNum')?.touched || apartment.get('apartNum')?.dirty)">
+            <small *ngIf="apartment.get('apartNum')?.errors?.['required']">Apartment Number is required.</small>
+            <small *ngIf="apartment.get('apartNum')?.errors?.['pattern']">Only numbers are allowed.</small>
+        </div>
+    </div>
+
+    <div>
+        <label for="floorNum">Floor Number:</label>
+        <input id="floorNum" formControlName="floorNum" type="text">
+        <div *ngIf="apartment.get('floorNum')?.invalid && (apartment.get('floorNum')?.touched || apartment.get('floorNum')?.dirty)">
+            <small *ngIf="apartment.get('floorNum')?.errors?.['required']">Floor Number is required.</small>
+            <small *ngIf="apartment.get('floorNum')?.errors?.['pattern']">Only numbers are allowed.</small>
+        </div>
+    </div>
+
+    <div>
+        <label for="surface">Surface:</label>
+        <div>
+            <input id="surfaceOui" formControlName="surface" type="radio" value="oui">
+            <label for="surfaceOui">Oui</label>
+            <input id="surfaceNon" formControlName="surface" type="radio" value="non">
+            <label for="surfaceNon">Non</label>
+        </div>
+        <div *ngIf="apartment.get('surface')?.invalid && (apartment.get('surface')?.touched || apartment.get('surface')?.dirty)">
+            <small *ngIf="apartment.get('surface')?.errors?.['required']">Surface is required.</small>
+        </div>
+    </div>
+
+    <div *ngIf="apartment.get('surface')?.value === 'oui'">
+        <label for="terrace">Terrace:</label>
+        <input id="terrace" formControlName="terrace" type="text">
+        <div *ngIf="apartment.get('terrace')?.invalid && (apartment.get('terrace')?.touched || apartment.get('terrace')?.dirty)">
+            <small *ngIf="apartment.get('terrace')?.errors?.['required']">Terrace is required.</small>
+            <small *ngIf="apartment.get('terrace')?.errors?.['pattern']">Only numbers are allowed.</small>
+        </div>
+        <div>
+            <label for="category">Category:</label>
+            <select id="category" formControlName="category">
+                <option value="S+1">S+1</option>
+                <option value="S+2">S+2</option>
+                <option value="S+3">S+3</option>
+                <option value="S+4">S+4</option>
+            </select>
+            <div *ngIf="apartment.get('category')?.invalid && (apartment.get('category')?.touched || apartment.get('category')?.dirty)">
+                <small *ngIf="apartment.get('category')?.errors?.['required']">Category is required.</small>
+            </div>
+        </div>
+    </div>
+    <input type="submit" value="Submit" />
+</form>
+
+<style>
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        max-width: 400px;
+        margin: auto;
+    }
+
+    input[type="text"], input[type="file"], select {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+</style>
