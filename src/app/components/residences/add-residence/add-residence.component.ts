@@ -9,6 +9,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class AddResidenceComponent implements OnInit {
   residence!: FormGroup;
   ngOnInit(): void {
+     //<input>
     this.residence = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.minLength(3)]),
       address: new FormGroup({
@@ -17,7 +18,6 @@ export class AddResidenceComponent implements OnInit {
       }),
       image: new FormControl('', [Validators.required]),
       status: new FormControl('', [Validators.required]),
-      description: new FormControl('', [Validators.maxLength(500)]),
     });
   }
   add() {

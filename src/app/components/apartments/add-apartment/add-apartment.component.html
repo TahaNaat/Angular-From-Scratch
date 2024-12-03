@@ -1,70 +1,201 @@
-<form [formGroup]="apartment"  enctype="multipart/form-data">
-    <div>
-        <label for="apartNum">Apartment Number:</label>
-        <input id="apartNum" formControlName="apartNum" type="text">
-        <div *ngIf="apartment.get('apartNum')?.invalid && (apartment.get('apartNum')?.touched || apartment.get('apartNum')?.dirty)">
-            <small *ngIf="apartment.get('apartNum')?.errors?.['required']">Apartment Number is required.</small>
-            <small *ngIf="apartment.get('apartNum')?.errors?.['pattern']">Only numbers are allowed.</small>
+<div class="container">
+  <div class="row">
+    <h3>Add new apartment</h3>
+  </div>
+  <div class="row">
+    <form [formGroup]="apartment">
+      <div class="mb-3">
+        <label>Apartment Number :</label>
+        <input class="form-control" formControlName="apartNum" />
+        <div
+          class="alert alert-danger"
+          *ngIf="
+            apartment.get('apartNum')!.invalid &&
+            (apartment.get('apartNum')!.touched ||
+              apartment.get('apartNum')!.dirty)
+          "
+        >
+          <div *ngIf="apartment.get('apartNum')!.hasError('required')">
+            Apartment number is required
+          </div>
+          <div *ngIf="apartment.get('apartNum')!.hasError('pattern')">
+            Apartment number invalid
+          </div>
         </div>
-    </div>
-
-    <div>
-        <label for="floorNum">Floor Number:</label>
-        <input id="floorNum" formControlName="floorNum" type="text">
-        <div *ngIf="apartment.get('floorNum')?.invalid && (apartment.get('floorNum')?.touched || apartment.get('floorNum')?.dirty)">
-            <small *ngIf="apartment.get('floorNum')?.errors?.['required']">Floor Number is required.</small>
-            <small *ngIf="apartment.get('floorNum')?.errors?.['pattern']">Only numbers are allowed.</small>
+      </div>
+      <div class="mb-3">
+        <label>Floor Number :</label>
+        <input class="form-control" formControlName="floorNum" />
+        <div
+          class="alert alert-danger"
+          *ngIf="
+            apartment.get('floorNum')!.invalid &&
+            (apartment.get('floorNum')!.touched ||
+              apartment.get('floorNum')!.dirty)
+          "
+        >
+          <div *ngIf="apartment.get('floorNum')!.hasError('required')">
+            Floor number is required
+          </div>
+          <div *ngIf="apartment.get('floorNum')!.hasError('pattern')">
+            Floor number invalid
+          </div>
         </div>
-    </div>
-
-    <div>
-        <label for="surface">Surface:</label>
-        <div>
-            <input id="surfaceOui" formControlName="surface" type="radio" value="oui">
-            <label for="surfaceOui">Oui</label>
-            <input id="surfaceNon" formControlName="surface" type="radio" value="non">
-            <label for="surfaceNon">Non</label>
+      </div>
+      <div class="mb-3">
+        <label>Surface :</label>
+        <input class="form-control" formControlName="surface" />
+        <div
+          class="alert alert-danger"
+          *ngIf="
+            apartment.get('surface')!.invalid &&
+            (apartment.get('surface')!.touched ||
+              apartment.get('surface')!.dirty)
+          "
+        >
+          <div *ngIf="apartment.get('surface')!.hasError('required')">
+            Surface is required
+          </div>
+          <div *ngIf="apartment.get('surface')!.hasError('pattern')">
+            Surface invalid
+          </div>
         </div>
-        <div *ngIf="apartment.get('surface')?.invalid && (apartment.get('surface')?.touched || apartment.get('surface')?.dirty)">
-            <small *ngIf="apartment.get('surface')?.errors?.['required']">Surface is required.</small>
+      </div>
+      <div class="mb-3">
+        <label>Surface :</label>
+        <input type="radio" formControlName="terrace" value="oui" />Oui
+        <input type="radio" formControlName="terrace" value="non" />Non
+        <div
+          class="alert alert-danger"
+          *ngIf="
+            apartment.get('terrace')!.invalid &&
+            (apartment.get('terrace')!.touched ||
+              apartment.get('terrace')!.dirty)
+          "
+        >
+          <div *ngIf="apartment.get('terrace')!.hasError('required')">
+            Surface is required
+          </div>
         </div>
-    </div>
-
-    <div *ngIf="apartment.get('surface')?.value === 'oui'">
-        <label for="terrace">Terrace:</label>
-        <input id="terrace" formControlName="terrace" type="text">
-        <div *ngIf="apartment.get('terrace')?.invalid && (apartment.get('terrace')?.touched || apartment.get('terrace')?.dirty)">
-            <small *ngIf="apartment.get('terrace')?.errors?.['required']">Terrace is required.</small>
-            <small *ngIf="apartment.get('terrace')?.errors?.['pattern']">Only numbers are allowed.</small>
+      </div>
+      <div class="mb-3" *ngIf="apartment.get('terrace')!.value == 'oui'">
+        <label>Surface terrace:</label>
+        <input class="form-control" formControlName="surfaceterrace" />
+        <div
+          class="alert alert-danger"
+          *ngIf="
+            apartment.get('surfaceterrace')!.invalid &&
+            (apartment.get('surfaceterrace')!.touched ||
+              apartment.get('surfaceterrace')!.dirty)
+          "
+        >
+          <div *ngIf="apartment.get('surfaceterrace')!.hasError('pattern')">
+            Surface terrace invalid
+          </div>
         </div>
-        <div>
-            <label for="category">Category:</label>
-            <select id="category" formControlName="category">
-                <option value="S+1">S+1</option>
-                <option value="S+2">S+2</option>
-                <option value="S+3">S+3</option>
-                <option value="S+4">S+4</option>
-            </select>
-            <div *ngIf="apartment.get('category')?.invalid && (apartment.get('category')?.touched || apartment.get('category')?.dirty)">
-                <small *ngIf="apartment.get('category')?.errors?.['required']">Category is required.</small>
-            </div>
+      </div>
+      <div class="mb-3">
+        <label>Category:</label>
+        <select class="form-select" formControlName="category">
+          <option value="s+1">S+1</option>
+          <option value="s+2">S+2</option>
+          <option value="s+3">S+3</option>
+          <option value="s+4">S+4</option>
+        </select>
+        <div
+          class="alert alert-danger"
+          *ngIf="
+            apartment.get('category')!.invalid &&
+            (apartment.get('category')!.touched ||
+              apartment.get('category')!.dirty)
+          "
+        >
+          <div *ngIf="apartment.get('category')!.hasError('required')">
+            Category is required
+          </div>
         </div>
-    </div>
-    <input type="submit" value="Submit" />
-</form>
-
+      </div>
+      <div class="mb-3">
+        <input
+          type="sumbit"
+          value="Submit"
+          class="btn btn-outline-success"
+          (click)="add()"
+        />
+      </div>
+    </form>
+  </div>
+</div>
 <style>
-    form {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        max-width: 400px;
-        margin: auto;
-    }
+  .container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
 
-    input[type="text"], input[type="file"], select {
-        padding: 8px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-    }
+  .row {
+    margin-bottom: 20px;
+  }
+
+  h3 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #444;
+    font-family: "Arial", sans-serif;
+  }
+
+  label {
+    font-weight: bold;
+    margin-bottom: 8px;
+    display: block;
+    color: #555;
+  }
+
+  .form-control,
+  .form-select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+
+  .form-control:focus,
+  .form-select:focus {
+    border-color: #66afe9;
+    box-shadow: 0 0 8px rgba(102, 175, 233, 0.6);
+    outline: none;
+  }
+
+  .alert {
+    margin-top: 10px;
+    padding: 12px;
+    border-radius: 5px;
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  .btn-outline-success {
+    background-color: #28a745;
+    color: #fff;
+    transition: background-color 0.3s;
+  }
+
+  .btn-outline-success:hover {
+    background-color: #218838;
+  }
 </style>
